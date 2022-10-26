@@ -8,6 +8,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./index.css">
+       
+
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
      integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
      crossorigin=""/>
@@ -17,14 +19,19 @@
 
 
          <div id="map"></div>
-         <button onClick=fullScreenView()>Full Screen</button>
+
+         <button class="" onClick=fullScreenView()>Full Screen</button>
+         
+         <div class="coordinate"></div>
+        
          <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
         integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
           crossorigin=""></script>
-    </body>
-</html>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js
+"></script>
 
-<script>
+
+          <script>
         var map = L.map('map').setView([38, 71], 9);
         map.zoomControl.setPosition('topright')
         
@@ -48,5 +55,12 @@
             console.log('fullscreen')
             mapDiv.requestFullscreen()
         }
+         map.on('mousemove',function(e){
+            console.log(e.latlng.lat)
+           $('.coordinate').html(`Latitude: ${e.latlng.lat} Longitude: ${e.latlng.lng}`) 
+        })
 
 </script>
+    </body>
+</html>
+
