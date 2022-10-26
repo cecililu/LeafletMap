@@ -20,7 +20,8 @@
 
          <div id="map"></div>
 
-         <button class="" onClick=fullScreenView()>Full Screen</button>
+         <button class="full-screen" onClick=fullScreenView()>Full Screen</button>
+         <button class="print-btn" onClick=fullScreenView()>Print</button>
          
          <div class="coordinate"></div>
         
@@ -28,11 +29,11 @@
         integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
           crossorigin=""></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js
-"></script>
+">       </script>
 
 
           <script>
-        var map = L.map('map').setView([38, 71], 9);
+        var map = L.map('map').setView([38, 71], 19);
         map.zoomControl.setPosition('topright')
         
 
@@ -55,11 +56,15 @@
             console.log('fullscreen')
             mapDiv.requestFullscreen()
         }
+        //Lat long Display
          map.on('mousemove',function(e){
             console.log(e.latlng.lat)
            $('.coordinate').html(`Latitude: ${e.latlng.lat} Longitude: ${e.latlng.lng}`) 
         })
-
+      //print function  
+         $('.print-btn').click(function(){
+              window.print() 
+         })
 </script>
     </body>
 </html>
