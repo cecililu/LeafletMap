@@ -15,7 +15,10 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
      integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
      crossorigin=""/>
-    
+     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+   
+
+
     </head>
     <body>    
 
@@ -33,10 +36,11 @@
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js
 ">       </script>
           <script src="./leaflet.markercluster.js"></script>
-
+            <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
           <script src="./leaflet.browser.print.min.js"></script>
           <script src="./leaflet-measure.js"></script>
           <script src="./data.js"></script>
+          
           <script>
         var map = L.map('map').setView([38, 71], 10);
         map.zoomControl.setPosition('topright')
@@ -78,10 +82,17 @@
 
        //adding markers from geoJSON DATA
        markerCluster=L.markerClusterGroup();
-       var markers=L.geoJSON(data)
+       var markers=L.geoJSON(data,{
+           onEachFeature:function(feature,layer){
+              layer.bindPopup(feature.properties.name)    
+           }
+       })
        markers.addTo(markerCluster)
        
        markerCluster.addTo(map)
+
+
+      L.Control.geocoder().addTo(map);
 </script>
     </body>
 </html>

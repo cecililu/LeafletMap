@@ -3,7 +3,7 @@ var data={
     "features": [
       {
         "type": "Feature",
-        "properties": {},
+        "properties": {name:"HOME"},
         "geometry": {
           "coordinates": [
             22.00760854882401,
